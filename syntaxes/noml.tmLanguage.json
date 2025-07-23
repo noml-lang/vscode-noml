@@ -1,0 +1,122 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "NOML",
+  "scopeName": "source.noml",
+  "patterns": [
+    { "include": "#comments" },
+    { "include": "#strings" },
+    { "include": "#table-headers" },
+    { "include": "#key-value-pair" },
+    { "include": "#keywords" },
+    { "include": "#numbers" },
+    { "include": "#native-types" },
+    { "include": "#function-calls" }
+  ],
+  "repository": {
+    "comments": {
+      "name": "comment.line.number-sign.noml",
+      "match": "#.*"
+    },
+    "key-value-pair": {
+      "patterns": [
+        {
+          "name": "variable.other.property.noml",
+          "match": "([a-zA-Z_][a-zA-Z0-9_]*|\\\"[^\\\"]*\\\")\\s*(?==)"
+        },
+        {
+          "name": "keyword.operator.assignment.noml",
+          "match": "="
+        }
+      ]
+    },
+    "table-headers": {
+      "patterns": [
+        {
+          "name": "entity.name.section.array.noml",
+          "begin": "\\[\\[",
+          "end": "\\]\\]",
+          "patterns": [{ "include": "#dotted-keys" }]
+        },
+        {
+          "name": "entity.name.section.table.noml",
+          "begin": "\\[",
+          "end": "\\]",
+          "patterns": [{ "include": "#dotted-keys" }]
+        }
+      ]
+    },
+    "dotted-keys": {
+      "patterns": [
+        {
+          "name": "keyword.operator.accessor.noml",
+          "match": "\\."
+        },
+        {
+          "name": "variable.other.noml",
+          "match": "[a-zA-Z_][a-zA-Z0-9_]*"
+        }
+      ]
+    },
+    "keywords": {
+      "patterns": [{
+        "name": "constant.language.noml",
+        "match": "\\b(true|false|null)\\b"
+      }]
+    },
+    "strings": {
+      "patterns": [
+        {
+          "name": "string.quoted.raw.noml",
+          "begin": "r#*\"",
+          "end": "\"#*",
+          "patterns": []
+        },
+        {
+          "name": "string.quoted.triple.double.noml",
+          "begin": "\"\"\"",
+          "end": "\"\"\"",
+          "patterns": [{ "include": "#interpolation" }]
+        },
+        {
+          "name": "string.quoted.double.noml",
+          "begin": "\"",
+          "end": "\"",
+          "patterns": [
+            { "include": "#string-escapes" },
+            { "include": "#interpolation" }
+          ]
+        },
+        {
+          "name": "string.quoted.single.noml",
+          "begin": "'",
+          "end": "'",
+          "patterns": [{ "include": "#string-escapes" }]
+        }
+      ]
+    },
+    "string-escapes": {
+      "name": "constant.character.escape.noml",
+      "match": "\\\\."
+    },
+    "interpolation": {
+      "name": "meta.embedded.interpolation.noml",
+      "begin": "\\$\\{",
+      "end": "\\}",
+      "patterns": [{ "include": "#dotted-keys" }]
+    },
+    "numbers": {
+      "patterns": [{
+        "name": "constant.numeric.noml",
+        "match": "\\b-?(0x[\\da-fA-F]+|0o[0-7]+|0b[01]+|\\d*\\.?\\d+([eE][+-]?\\d+)?)\\b"
+      }]
+    },
+    "native-types": {
+      "name": "support.type.noml",
+      "match": "@(size|duration|url|regex)\\b"
+    },
+    "function-calls": {
+      "name": "support.function.noml",
+      "match": "\\b(env|include)\\b"
+    }
+  }
+}

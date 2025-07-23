@@ -1,0 +1,25 @@
+{
+  "name": "noml-syntax",
+  "displayName": "NOML Language Support",
+  "description": "Syntax highlighting for the NOML configuration language.",
+  "version": "0.5.0",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "noml",
+      "aliases": ["NOML", "noml"],
+      "extensions": [".noml"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "noml",
+      "scopeName": "source.noml",
+      "path": "./syntaxes/noml.tmLanguage.json"
+    }]
+  }
+}
