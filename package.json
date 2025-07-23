@@ -32,6 +32,9 @@
     },
     "files": [
         "syntaxes/noml.tmLanguage.json",
-        "language-configuration.json"
+        "language-configuration.json",
+        "package.json",
+        "README.md",
+        "LICENSE"
     ]
 }
