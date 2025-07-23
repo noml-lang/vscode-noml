@@ -1,25 +1,37 @@
 {
-  "name": "noml-syntax",
-  "displayName": "NOML Language Support",
-  "description": "Syntax highlighting for the NOML configuration language.",
-  "version": "0.5.0",
-  "engines": {
-    "vscode": "^1.80.0"
-  },
-  "categories": [
-    "Programming Languages"
-  ],
-  "contributes": {
-    "languages": [{
-      "id": "noml",
-      "aliases": ["NOML", "noml"],
-      "extensions": [".noml"],
-      "configuration": "./language-configuration.json"
-    }],
-    "grammars": [{
-      "language": "noml",
-      "scopeName": "source.noml",
-      "path": "./syntaxes/noml.tmLanguage.json"
-    }]
-  }
+    "name": "noml-config-markup",
+    "displayName": "NOML Language Support",
+    "description": "Syntax highlighting for the NOML configuration language.",
+        "version": "0.7.0",
+      "publisher": "JamesGober",
+        "license": "Apache-2.0",
+    "repository": {
+            "type": "git",
+             "url": "https?://github.com/noml-lang/vscode-noml.git",
+       "directory": "vscode-noml",
+          "branch": "main"
+    },
+    "engines": {
+        "vscode": "^1.80.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+                    "id": "noml",
+                "aliases": ["NOML", "noml"],
+            "extensions": [".noml"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "noml",
+            "scopeName": "source.noml",
+                "path": "./syntaxes/noml.tmLanguage.json"
+        }]
+    },
+    "files": [
+        "syntaxes/noml.tmLanguage.json",
+        "language-configuration.json"
+    ]
 }
